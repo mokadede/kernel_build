@@ -27,11 +27,11 @@ jobs:
 
       - name: Pull kernel source
         run: |
-          git clone --depth=1 ${{ env.KERNEL_SOURCE }} kernel-source
+          git clone --depth=1 ${{ env.KERNEL_SOURCE }} -b ${{env.KERNEL_BRANCH }} kernel-source
 
       - name: Build kernel
         run: |
-          export KBUILD_BUILD_USER="hnkksk-dropbear"
+          export KBUILD_BUILD_USER="puki"
           export KBUILD_BUILD_HOST="workspace"
           export PATH=$GITHUB_WORKSPACE/clang/bin:${PATH}
           args="                  ARCH=arm64 \
